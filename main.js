@@ -4,32 +4,32 @@ const STAR='<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.
 /* DATA */
 const destinations=[
   {n:'Kashmir',p:'65,000',img:'kashmir.webp'},
-  {n:'Manali',p:'55,000',img:'manali.webp'},
-  {n:'Shimla',p:'52,000',img:'shimla.webp'},
-  {n:'Kerala',p:'60,000',img:'kerala.webp'},
-  {n:'Delhi',p:'45,000',img:'delhi.webp'},
-  {n:'Agra',p:'50,000',img:'agra.webp'},
-  {n:'Jaipur',p:'48,000',img:'jaipur.webp'},
-  {n:'Varanasi',p:'47,000',img:'banaras.webp'},
-  {n:'Ayodhya',p:'46,000',img:'ayodhya.webp'},
-  {n:'Haridwar',p:'45,000',img:'haridwar.webp'},
-  {n:'Munnar',p:'58,000',img:'munnar.webp'},
-  {n:'Ooty',p:'55,000',img:'ooty.webp'},
-  {n:'Nainital',p:'50,000',img:'nainital.webp'},
-  {n:'Amritsar',p:'48,000',img:'amritsar.webp'}
+  {n:'Manali',p:'55,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/manali.webp'},
+  {n:'Shimla',p:'52,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/shimla.webp'},
+  {n:'Kerala',p:'60,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/kerala.webp'},
+  {n:'Delhi',p:'45,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/delhi.webp'},
+  {n:'Agra',p:'50,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/agra.webp'},
+  {n:'Jaipur',p:'48,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/jaipur.webp'},
+  {n:'Varanasi',p:'47,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/banaras.webp'},
+  {n:'Ayodhya',p:'46,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/ayodhya.webp'},
+  {n:'Haridwar',p:'45,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/haridwar.webp'},
+  {n:'Munnar',p:'58,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/munnar.webp'},
+  {n:'Ooty',p:'55,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/ooty.webp'},
+  {n:'Nainital',p:'50,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/nainital.webp'},
+  {n:'Amritsar',p:'48,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/amritsar.webp'}
 ];
 
 const packages=[
-  {t:'North India Discovery',d:'22 Days',badge:'Bestseller',price:'88,000',img:'delhi.webp',
+  {t:'North India Discovery',d:'22 Days',badge:'Bestseller',price:'88,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/delhi.webp',
    route:'Mauritius→Delhi→Lucknow→Ayodhya→Agra→Mathura→Vrindavan→Jaipur→Amritsar→Manali→Shimla→Chandigarh→Haridwar→Delhi',
    incl:['Flights','3-Star Hotels','Breakfast','Transport','Sightseeing','Visa','Tour Leader']},
-  {t:'South India Experience',d:'12 Days',badge:'Popular',price:'75,000',img:'kerala.webp',
+  {t:'South India Experience',d:'12 Days',badge:'Popular',price:'75,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/kerala.webp',
    route:'Kerala→Munnar→Alleppey→Kochi→Ooty→Kodaikanal→Madurai→Rameswaram',
    incl:['Hotels','Breakfast','Transfers','Sightseeing']},
-  {t:'Manali Winter Escape',d:'11 Days',badge:'Winter Special',price:'80,000',img:'manali.webp',
+  {t:'Manali Winter Escape',d:'11 Days',badge:'Winter Special',price:'80,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/manali.webp',
    route:'Delhi→Shimla→Manali→Solang Valley→Rohtang Pass',
    incl:['Hotel','Breakfast + Dinner','Private Cab']},
-  {t:'Sri Lanka Holiday',d:'8 Days',badge:'International',price:'67,266',img:'srilanka.webp',
+  {t:'Sri Lanka Holiday',d:'8 Days',badge:'International',price:'67,266',img:'https://ik.imagekit.io/g8nndpy6v/JST/srilanka.webp',
    route:'Kandy→Nuwara Eliya→Bentota→Colombo',
    incl:['Flights','Hotels','Visa','Transfers']}
 ];
@@ -43,7 +43,7 @@ const testimonials=[
 
 const faqs=[
   {q:'How do I book a trip?',a:'Reach us via WhatsApp, email or the website inquiry form — we reply within 24 hours.'},
-  {q:'Do you provide visa assistance?',a:'Yes, we offer specialized visa assistance for Mauritius passport holders.'},
+  {q:'Do you provide visa assistance?',a:'Yes, we offer specialized visa assistance for passport holders.'},
   {q:'Can I customize my itinerary?',a:'Yes, every itinerary is fully tailored to your dates, budget and preferences.'},
   {q:'Do you arrange airport transfers?',a:'Yes, private airport transfers are included in most of our packages.'},
   {q:'Do you offer travel insurance?',a:'Yes, our insurance covers medical, cancellation, delay and baggage.'}
@@ -115,27 +115,46 @@ document.getElementById('pkgGrid').innerHTML=packages.map((p,i)=>`
   </div>`).join('');
 
 /* RENDER TESTIMONIALS */
-document.getElementById('testGrid').innerHTML=testimonials.map(t=>`
-  <div class="test-card reveal">
-    <div class="stars">${STAR.repeat(t.r)}</div>
-    <p>"${t.t}"</p>
-    <div class="test-author">${t.a}</div>
-    <div class="test-loc">${t.l}</div>
-  </div>`).join('');
+document.getElementById('testGrid').innerHTML=testimonials.map(t=>{
+  const initials=t.a.split(' ').map(n=>n[0]).join('').toUpperCase();
+  return `
+    <div class="test-card reveal">
+      <div class="test-header">
+        <div class="test-avatar">${initials}</div>
+        <div class="test-meta">
+          <div class="test-author">${t.a}</div>
+          <div class="test-loc">${t.l}</div>
+          <div class="stars">${STAR.repeat(t.r)}</div>
+        </div>
+      </div>
+      <p>"${t.t}"</p>
+    </div>`;
+}).join('');
 
 /* RENDER FAQ */
-document.getElementById('faqList').innerHTML=faqs.map(f=>`
+document.getElementById('faqList').innerHTML=faqs.map((f,i)=>`
   <div class="faq-item">
-    <button class="faq-q">${f.q}<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+    <button class="faq-q">
+      <span class="faq-num">${String(i+1).padStart(2,'0')}</span>
+      <span class="faq-q-text">${f.q}</span>
+      <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+    </button>
     <div class="faq-a"><p>${f.a}</p></div>
   </div>`).join('');
 
 document.querySelectorAll('.faq-q').forEach(b=>b.addEventListener('click',()=>{
-  const item=b.parentElement;const open=item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null;});
-  if(!open){item.classList.add('open');const a=item.querySelector('.faq-a');a.style.maxHeight=a.scrollHeight+40+'px';}
+  const item=b.parentElement;
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>{
+    i.classList.remove('open');
+    i.querySelector('.faq-a').style.maxHeight=null;
+  });
+  if(!wasOpen){
+    item.classList.add('open');
+    const a=item.querySelector('.faq-a');
+    a.style.maxHeight=a.scrollHeight+'px';
+  }
 }));
-
 /* MODAL */
 const modal=document.getElementById('modal');
 function openModal(i){
@@ -169,13 +188,14 @@ navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLink
 (function(){
   const slides=[...document.querySelectorAll('.hero-bg')];
   slides.forEach(s=>s.style.backgroundImage=`url('${s.dataset.img}')`);
+  // Start based on hour, but rotate every 10 minutes instead of every hour
   let idx=new Date().getHours()%slides.length;
   slides[idx].classList.add('active');
   setInterval(()=>{
     slides[idx].classList.remove('active');
     idx=(idx+1)%slides.length;
     slides[idx].classList.add('active');
-  },3600000);
+  },600000); // 10 minutes in ms
 })();
 
 /* SCROLL REVEAL */
