@@ -41,7 +41,7 @@
   .logo img{height:48px;width:auto;display:block;border-radius:15%;}
   .logo .logo-text{display:flex;flex-direction:column;}
   .logo .brand{font-family:var(--display);font-size:1.3rem;font-weight:800;color:#fff;transition:.35s;letter-spacing:.3px;}
-  .logo .tag{font-size:.66rem;letter-spacing:1.5px;color:var(--accent-blue);font-weight:600;margin-top:3px;}
+  .logo .tag{font-size:.66rem;letter-spacing:1.5px;color:#FFA726;font-weight:600;margin-top:3px;}
   header.scrolled .logo .brand{color:var(--deep-blue);}
   header:not(.scrolled) .logo .tag{color:#bfe0f5;}
   .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
