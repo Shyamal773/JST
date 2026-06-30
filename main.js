@@ -4,7 +4,7 @@ const STAR='<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.
 /* DATA */
 const destinations=[
   {n:'Kashmir',p:'25,000',img:'kashmir.webp',days:'10D/9N'},
-    {n:'Manali',p:'22,500',img:'https://ik.imagekit.io/g8nndpy6v/JST/manali.webp',days:'10D/9N'},
+    {n:'Manali',p:'22,500',img:'https://ik.imagekit.io/g8nndpy6v/JST/manali.webp',days:'10D/9N'}
     {n:'Shimla',p:'24,500',img:'https://ik.imagekit.io/g8nndpy6v/JST/shimla.webp',days:'10D/9N'},
     {n:'Kerala',p:'24,900',img:'https://ik.imagekit.io/g8nndpy6v/JST/kerala.webp',days:'10D/9N'},
     {n:'Delhi',p:'22,000',img:'https://ik.imagekit.io/g8nndpy6v/JST/delhi.webp',days:'8D/7N'},
