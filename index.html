@@ -45,7 +45,7 @@
   <div class="hero-bg" data-img="https://ik.imagekit.io/g8nndpy6v/JST/nainital.webp"></div>
   <div class="hero-bg" data-img="https://ik.imagekit.io/g8nndpy6v/JST/munnar.webp"></div>
   <div class="container hero-content">
-    <h1>Explore India with Confidence</h1>
+    <h1>Explore India & the World with Confidence</h1>
     <p>Mauritian travel specialists crafting personalized journeys across India &amp; beyond — flights, visas, hotels, tours, all in one place.</p>
     <div class="hero-ctas">
       <a href="#packages" class="btn btn-gold">View Packages</a>
@@ -137,7 +137,7 @@
           <i data-lucide="map-pinned"></i>
         </div>
         <h3>Tour Packages</h3>
-        <p>Customized India experiences designed around your dates and interests.</p>
+        <p>Holiday packages for India, Nepal, Sri Lanka, Thailand & Vietnam.</p>
       </div>
 
       <div class="card service-card reveal">
@@ -193,13 +193,133 @@
   </div>
 </section>
 
+<!-- PACKAGE DETAIL MODAL -->
+<div class="pkg-modal" id="pkgModal">
+  <div class="pkg-modal-overlay"></div>
+  <div class="pkg-modal-content">
+    <button class="pkg-modal-close" id="pkgModalClose">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+
+    <div class="pkg-modal-header">
+      
+      <div class="pkg-modal-hero"></div>
+      <div class="pkg-modal-title-block">
+        <h1 id="modalTitle"></h1>
+        <p id="modalRoute"></p>
+        <div class="pkg-stats-row">
+          <div class="stat-box">
+            <span class="stat-icon"><img src="https://img.icons8.com/ios-filled/50/FFFFFF/calendar--v1.png" alt="Calendar" style="height:1em;vertical-align:middle;"></span>
+            <div>
+              <span class="stat-label">Duration</span>
+              <span class="stat-value" id="modalDuration"></span>
+            </div>
+          </div>
+          <div class="stat-box">
+            <span class="stat-icon"><img src="https://img.icons8.com/sf-black-filled/64/FFFFFF/conference-call.png" alt="conference-call" alt="Users" style="height:1em;vertical-align:middle;"></span>
+            <div>
+              <span class="stat-label">Group Size</span>
+              <span class="stat-value">2-30 People</span>
+            </div>
+          </div>
+          <div class="stat-box">
+            <span class="stat-icon"><img src="https://img.icons8.com/hatch/64/FFFFFF/star.png" alt="Star" style="height:1em;vertical-align:middle;"></span>
+            <div>
+              <span class="stat-label">Rating</span>
+              <span class="stat-value">4.8/5 (142)</span>
+            </div>
+          </div>
+          <div class="stat-box">
+            <span class="stat-icon"><img src="https://img.icons8.com/ios-filled/50/FFFFFF/price-tag.png" alt="price-tag" style="height:1em;vertical-align:middle;"></span>
+            <div>
+              <span class="stat-label">Type</span>
+              <span class="stat-value" id="modalBadge"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pkg-modal-body">
+      <div class="pkg-modal-left">
+        <!-- OVERVIEW -->
+        <div class="modal-section">
+          <h2>Overview</h2>
+          <p id="modalOverview" class="modal-text"></p>
+        </div>
+
+        <!-- ITINERARY -->
+        <div class="modal-section">
+          <h2>Day-by-Day Itinerary</h2>
+          <div class="itinerary-list" id="modalItinerary"></div>
+        </div>
+
+        <!-- HIGHLIGHTS -->
+        <div class="modal-section">
+          <h2>Package Highlights</h2>
+          <div class="highlights-grid" id="modalHighlights"></div>
+        </div>
+
+        <!-- INCLUSIONS -->
+        <div class="modal-section">
+          <h2>What's Included</h2>
+          <div class="inclusions-list" id="modalInclusions"></div>
+        </div>
+
+        <!-- REVIEWS -->
+        <div class="modal-section">
+          <h2>Guest Reviews</h2>
+          <div class="reviews-grid" id="modalReviews"></div>
+        </div>
+      </div>
+
+      <div class="pkg-modal-right">
+        <!-- PRICE CARD -->
+        <div class="price-card">
+          <h3>Price Details</h3>
+          <div class="price-display">
+            <span class="price-label">Per Person</span>
+            <span class="price-amount" id="modalPrice"></span>
+          </div>
+          <div class="price-calc">
+            <label>Number of Travelers</label>
+            <div class="travelers-input">
+              <button id="travMinus">−</button>
+              <input type="number" id="travCount" value="2" min="1" max="10" readonly>
+              <button id="travPlus">+</button>
+            </div>
+            <div class="price-total-row">
+              <span>Total Price</span>
+              <span id="modalTotal" class="total-price">MUR 176,000</span>
+            </div>
+            <p class="price-note">*Flights & visas additional</p>
+          </div>
+          <div class="price-actions">
+            <button class="btn btn-gold book-btn" onclick="bookPackage()">Book Now</button>
+            <a class="btn btn-outline-white" href="https://wa.me/23059608155" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- INFO CARD -->
+        <div class="info-card">
+          <h3>Quick Info</h3>
+          <div class="info-grid" id="modalQuickInfo"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- CURATED COLLECTIONS -->
 <section class="section" id="collections">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Curated Collections</span>
       <h2>Curated Journeys, Handpicked for You</h2>
-      <p>Discover Hidden Gems Across Incredible India.</p>
+      <p>Creating unforgettable travel experiences across India, Nepal, Sri Lanka, Thailand & Vietnam</p>
     </div>
     <div class="grid coll-grid" id="collGrid"></div>
   </div>
@@ -217,7 +337,7 @@
       <div class="why-card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M6 6l1.5 1.5M16.5 16.5 18 18M18 6l-1.5 1.5M7.5 16.5 6 18"/><circle cx="12" cy="12" r="4"/></svg></div><h3>Personalized Service</h3><p>Every trip tailored to your needs.</p></div>
       <div class="why-card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Mauritian Specialists</h3><p>Exclusively for travelers departing Mauritius.</p></div>
       <div class="why-card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Trusted Support</h3><p>Assistance from inquiry to safe return.</p></div>
-      <div class="why-card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg></div><h3>India Experts</h3><p>Deep destination knowledge across India.</p></div>
+      <div class="why-card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg></div><h3>Travel Experts</h3><p>Deep destination knowledge across India and beyond.</p></div>
       <div class="why-card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg></div><h3>End-to-End Planning</h3><p>Flights, hotels, visas &amp; tours in one place.</p></div>
     </div>
   </div>
@@ -361,5 +481,6 @@
 </div>
 
 <script src="main.js"></script>
+
 </body>
 </html>
